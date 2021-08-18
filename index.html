@@ -19,7 +19,7 @@
                 <tr>
                     <td><button>(</button></td>
                     <td><button>)</button></td>
-                    <td><button>c</button></td>
+                    <td><button>C</button></td>
                     <td><button>%</button></td>
                 </tr>
                 <tr>
@@ -50,6 +50,33 @@
             </table>
         </div>
     </div>
+
+    <script>
+        let calculatorScreen = document.getElementById('inputScreen');
+        let buttons = document.querySelectorAll('button');
+        let ScreenValue = " ";
+        for (item of buttons) {
+            item.addEventListener('click', (e) => {
+                buttonText = e.target.innerText;
+                console.log(buttonText); // all button works at console
+                if (buttonText == 'X') {
+                    buttonText = '*';
+                    ScreenValue += buttonText;
+                    calculatorScreen.value = ScreenValue;
+                } else if (buttonText == 'C') {
+                    ScreenValue = " ";
+                    calculatorScreen.value = ScreenValue;
+
+                } else if (buttonText == '=') {
+                    calculatorScreen.value = eval(ScreenValue);
+
+                } else {
+                    ScreenValue += buttonText;
+                    calculatorScreen.value = ScreenValue;
+                }
+            })
+        }
+    </script>
 
 </body>
 
